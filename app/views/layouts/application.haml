@@ -28,10 +28,12 @@
         %a.navbar-brand(href="#") DevNotes
         .navbar-collapse.collapse.navbar-responsive-collapse
           %ul.nav.navbar-nav
-            %li= link_to "Link 1", "/path1"
-            %li= link_to "Link 2", "/path2"
-            %li= link_to "Link 3", "/path3"
-            %li= link_to "Link 3", "/path3"
+            - if user_signed_in?
+              %li= link_to "Feed", "#"
+              %li= link_to "Notes", "#"
+              %li= link_to "Projects", "#"
+            - else
+              %li= link_to "Home", root_path
           %ul.nav.navbar-nav.navbar-right
             - if !user_signed_in?
               %li= link_to "Sign In", new_user_session_path
