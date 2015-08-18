@@ -1,0 +1,17 @@
+%h1 Notes
+
+%table
+  %thead
+    %tr
+      %th Text
+  %tbody
+    - @notes.each do |note|
+      %tr
+        %td= note.text
+        %td= link_to 'Show', note
+        %td= link_to 'Edit', edit_note_path(note)
+        %td= link_to 'Delete', note, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Note', new_note_path

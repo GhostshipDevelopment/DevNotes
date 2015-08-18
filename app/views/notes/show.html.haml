@@ -1,0 +1,15 @@
+%p#notice= notice
+
+%p
+  %b Text:
+  = @note.text
+%p
+  %b User:
+  = @note.user_id
+%p
+  %b Project:
+  = @note.project_id
+
+= link_to 'Edit', edit_note_path(@note)
+\|
+= link_to 'Back', notes_path
