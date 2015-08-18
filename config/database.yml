@@ -1,0 +1,18 @@
+common: &common
+  adapter: postgresql
+  username: devnotes
+  password: devnotes
+
+development:
+  <<: *common
+  database: devontes_development
+  host: localhost
+
+test:
+  <<: *common
+  database: devontes_test
+  host: localhost
+
+production:
+  <<: *common
+  database: devontes_production
