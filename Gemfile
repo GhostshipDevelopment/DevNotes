@@ -2,6 +2,7 @@ source 'https://rubygems.org'
 
 
 gem 'rails', '4.1.12'
+gem 'thin'
 gem 'pg'
 gem 'sass-rails', '~> 4.0.3'
 gem 'less-rails'
