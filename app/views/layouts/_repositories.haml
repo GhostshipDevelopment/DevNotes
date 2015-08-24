@@ -1,0 +1,13 @@
+.well.sidebar-nav
+  %h3 Public
+  %ul.nav.nav-list
+    %li.nav-header Repositories
+    - user.repositories.each do |repository|
+      - if !repository.private
+        %li= link_to repository.name, "#"
+  %h3 Private
+  %ul.nav.nav-list
+    %li.nav-header Repositories
+    - user.repositories.each do |repository|
+      - if repository.private
+        %li= link_to repository.name, "#"

@@ -4,6 +4,16 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable,
          :omniauthable, :omniauth_providers => [:github]
+
+  has_many :notes
+  
+  def github
+    Github.new oauth_token: self.token
+  end
+  
+  def repositories
+    self.github.repositories.list
+  end
   
   def self.from_omniauth(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|

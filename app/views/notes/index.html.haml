@@ -1,3 +1,5 @@
+- content_for(:sidebar) do |s|
+  = render "layouts/repositories", user: current_user
 %h1 Notes
 
 %table
