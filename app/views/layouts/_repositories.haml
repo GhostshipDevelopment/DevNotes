@@ -4,10 +4,10 @@
     %li.nav-header Repositories
     - user.repositories.each do |repository|
       - if !repository.private
-        %li= link_to repository.name, "#"
+        %li= link_to repository.name, notes_path(project: repository.name)
   %h3 Private
   %ul.nav.nav-list
     %li.nav-header Repositories
     - user.repositories.each do |repository|
       - if repository.private
-        %li= link_to repository.name, "#"
+        %li= link_to repository.name, notes_path(project: repository.name)

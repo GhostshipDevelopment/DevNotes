@@ -9,5 +9,8 @@
   .field
     = f.label :text
     = f.text_area :text
+  .field
+    = f.label :project_name
+    = f.collection_select :project_name, current_user.repositories, :name, :name
   .actions
     = f.submit 'Save'

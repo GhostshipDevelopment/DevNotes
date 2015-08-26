@@ -25,13 +25,12 @@
           %span.icon-bar
           %span.icon-bar
           %span.icon-bar
-        %a.navbar-brand(href="#") DevNotes
+        = link_to "DevNotes", root_path, class: "navbar-brand"
         .navbar-collapse.collapse.navbar-responsive-collapse
           %ul.nav.navbar-nav
             - if user_signed_in?
               %li= link_to "Feed", "#"
               %li= link_to "Notes", notes_path
-              %li= link_to "Projects", projects_path
             - else
               %li= link_to "Home", root_path
           %ul.nav.navbar-nav.navbar-right

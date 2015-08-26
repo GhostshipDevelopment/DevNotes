@@ -4,7 +4,11 @@ class NotesController < ApplicationController
   respond_to :html
 
   def index
-    @notes = Note.all
+    if params[:project]
+      @notes = current_user.notes.where(project_name: params[:project])
+    else
+      @notes = current_user.notes.all
+    end
     respond_with(@notes)
   end
 
@@ -13,7 +17,7 @@ class NotesController < ApplicationController
   end
 
   def new
-    @note = Note.new
+    @note = current_user.notes.new
     respond_with(@note)
   end
 
@@ -21,7 +25,7 @@ class NotesController < ApplicationController
   end
 
   def create
-    @note = Note.new(note_params)
+    @note = current_user.notes.new(note_params)
     @note.save
     respond_with(@note)
   end
@@ -42,6 +46,6 @@ class NotesController < ApplicationController
     end
 
     def note_params
-      params.require(:note).permit(:text, :user_id, :project_id)
+      params.require(:note).permit(:text, :user_id, :project_name)
     end
 end

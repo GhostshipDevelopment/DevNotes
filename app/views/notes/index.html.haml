@@ -1,19 +1,23 @@
 - content_for(:sidebar) do |s|
   = render "layouts/repositories", user: current_user
-%h1 Notes
 
-%table
-  %thead
-    %tr
-      %th Text
-  %tbody
-    - @notes.each do |note|
+.panel.panel-default
+  .panel-heading
+    %h1 Notes
+  .panel-body
+    = link_to 'New Note', new_note_path, class: "btn btn-success"
+  %table.table.table-striped.table-hover
+    %thead
       %tr
-        %td= note.text
-        %td= link_to 'Show', note
-        %td= link_to 'Edit', edit_note_path(note)
-        %td= link_to 'Delete', note, :method => :delete, :data => { :confirm => 'Are you sure?' }
-
-%br
-
-= link_to 'New Note', new_note_path
+        %th Note
+        %th Project Name
+        %th
+    %tbody
+      - @notes.each do |note|
+        %tr
+          %td= note.text
+          %td= note.project_name
+          %td
+            = link_to 'Show', note, class: "btn btn-default"
+            = link_to 'Edit', edit_note_path(note), class: "btn btn-success"
+            = link_to 'Delete', note, class: "btn btn-danger", :method => :delete, :data => { :confirm => 'Are you sure?' }
