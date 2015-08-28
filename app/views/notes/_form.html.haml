@@ -12,5 +12,7 @@
   .field
     = f.label :project_name
     = f.collection_select :project_name, current_user.repositories, :name, :name
+  .git-file-name
+  .bitbucket-file-name
   .actions
     = f.submit 'Save'
